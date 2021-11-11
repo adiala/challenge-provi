@@ -2,6 +2,7 @@ import { getClient } from "../lib/sanity.server";
 import { groq } from "next-sanity";
 import Header from "@components/Header";
 import ImagesContainer from "@components/ImagesContainer";
+import Link from "next/link";
 
 const Home = ({ rooms }) => {
   const star = (
@@ -29,18 +30,20 @@ const Home = ({ rooms }) => {
   return (
     <>
       <Header />
-      <div className="w-2/4 py-10 px-8">
+      <div className="py-10 px-8">
         <h1 className="text-3xl font-bold mb-3">Acomodações em São Paulo</h1>
         <p className="mb-6 text-sm">
-          Mais de 85.000 hóspedes ficaram em São Paulo. Em média, eles
-          avaliaram suas estadias com 4.8 estrelas de um total de cinco.
+          Mais de 85.000 hóspedes ficaram em São Paulo. Em média, eles avaliaram
+          suas estadias com 4.8 estrelas de um total de cinco.
         </p>
         <hr />
         {rooms.map((room, index) => (
           <div className="flex py-6 gap-6 border-b-2">
-            <div className="w-72 h-48 rounded-xl overflow-hidden">
-              <ImagesContainer image={room.mainImage} />
-            </div>
+            <Link href={`rooms/${room.slug.current}`}>
+              <div className="w-72 h-48 rounded-xl overflow-hidden cursor-pointer">
+                <ImagesContainer image={room.mainImage} />
+              </div>
+            </Link>
             <div className="flex flex-col flex-grow">
               <p className="text-gray-600 tracking-tight">
                 Espaço inteiro: {room.type} em {room.location.district},{" "}
@@ -54,9 +57,12 @@ const Home = ({ rooms }) => {
               </p>
               <div className="flex justify-between mt-auto">
                 <p>
-                <span>{star}</span> <span className="font-bold">4,98</span> (93 comentários)
+                  <span>{star}</span> <span className="font-bold">4,98</span>{" "}
+                  (93 comentários)
                 </p>
-                <p className="font-bold text-lg">R${room.price} <span className="font-normal">/ noite</span></p>
+                <p className="font-bold text-lg">
+                  R${room.price} <span className="font-normal">/ noite</span>
+                </p>
               </div>
             </div>
           </div>

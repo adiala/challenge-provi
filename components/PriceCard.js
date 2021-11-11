@@ -20,7 +20,7 @@ const PriceCard = (props) => {
     </svg>
   );
   return (
-    <div className="w-full h-60 p-6 border border-gray-300 shadow-md rounded-xl mx-auto">
+    <div className="w-full p-6 border border-gray-300 shadow-md rounded-xl mx-auto">
       <div className="flex flex-col mb-6">
         <h4 className="font-bold text-2xl mb-1">
           R${props.price} <span className="font-normal text-base">/ noite</span>

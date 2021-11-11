@@ -12,7 +12,7 @@ const RoomInfo = (props) => {
           {props.beds} cama{isMultiple(props.beds)} · {props.bedrooms} quarto{isMultiple(props.bedrooms)}
         </p>
       </div>
-      <img src={props.avatar} className="w-14 h-14 rounded-full" />
+      <img src={props.avatar} className="w-14 h-14 object-cover rounded-full" />
     </div>
   );
 };
