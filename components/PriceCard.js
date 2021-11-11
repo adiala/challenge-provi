@@ -27,12 +27,14 @@ const PriceCard = (props) => {
         </h4>
         <div className="flex">
           <span className="mr-1">{star}</span>
-          <p><span className="font-bold">5,0</span> (18 Comentários)</p>
+          <p>
+            <span className="font-bold">5,0</span> (18 Comentários)
+          </p>
         </div>
       </div>
       <button
         className="w-full text-white p-3 rounded-md font-bold"
-        style={{backgroundColor: 'rgb(218,36,101)'}}
+        style={{ backgroundColor: "rgb(218,36,101)" }}
         onClick={() => {}}
       >
         Conferir disponibilidade

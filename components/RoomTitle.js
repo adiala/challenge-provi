@@ -26,7 +26,8 @@ const RoomTitle = (props) => {
       <h1 className="font-bold text-2xl mb-2">{props.title}</h1>
       <div className="flex space-x-2">
         <span>{star}</span>
-        <span className="font-bold">5,0</span><span className="text-gray-600">(18 Comentários)</span>
+        <span className="font-bold">5,0</span>
+        <span className="text-gray-600">(18 Comentários)</span>
         <span>·</span>
         <span className="text-gray-600">
           {props.district}, {props.city}, {props.country}
