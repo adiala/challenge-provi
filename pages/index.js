@@ -1,23 +1,28 @@
-import Head from 'next/head'
-import Header from '@components/Header'
-import Footer from '@components/Footer'
+import { getClient } from "../lib/sanity.server";
+import { groq } from "next-sanity";
+import { urlFor } from '../lib/sanity'
 
-export default function Home() {
-  return (
-    <div className="container">
-      <Head>
-        <title>Next.js Starter!</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+const Home = ({ rooms }) => {
+  return <>{rooms[0].title} <img src={urlFor(rooms[0].mainImage).url()} /></>;
+};
 
-      <main>
-        <Header title="Welcome to my app!" />
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
-      </main>
+export const getServerSideProps = async () => {
+  const roomsQuery = groq`*[_type == "property"]`;
+  const rooms = await getClient().fetch(roomsQuery);
 
-      <Footer />
-    </div>
-  )
-}
+  if (!rooms.length) {
+    return {
+      props: {
+        rooms: [],
+      },
+    };
+  } else {
+    return {
+      props: {
+        rooms,
+      },
+    };
+  }
+};
+
+export default Home;
